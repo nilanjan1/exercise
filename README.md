@@ -2,7 +2,7 @@
 
 ### Host system requirements
 
-Host system is the hypervisor machine where we will be booting up the virtyual machine. In this exercise I have used ubuntu 14.04 as the host OS and KVM as the hypervisor. The host system should be up and running. You should be able to create virtual machine in it. I have used NAT enabled network for the virtual machine network. By default libvirt will create a NAT enabled network named ***default*** and start dhcp service in it. In the host system enable hardware virtualization support from the BIOS.
+Host system is the hypervisor machine where we will be booting up the virtual machine. In this exercise I have used ubuntu 14.04 as the host OS and KVM as the hypervisor. The host system should be up and running. You should be able to create virtual machine in it. I have used NAT enabled network for the virtual machine network. By default libvirt will create a NAT enabled network named ***default*** and start dhcp service in it. In the host system enable hardware virtualization support from the BIOS.
 
 Run kvm-ok to see the virtualization support. Below output is desired
 
@@ -15,7 +15,7 @@ If the host system is also a virtual machine then performance will be significan
 ### Installing Host system
 
 - Install Ubuntu 14.04
-- Login to the host system as a priviledged user. In this tutorial I have used root user
+- Login to the host system as a privileged user. In this tutorial I have used root user
 - This user should be part of libvirtd group
 - Install software as mentioned below (If your host system is behind a proxy then you need to set http_proxy environmental variable at this point)
 Here I have used root user.
@@ -41,8 +41,8 @@ This will open a XML file. Edit it and save it and then start the network again
 
 
 ### Prerequisites for the automation tool
-- A running local webserver accessible from the host system without using proxy
-- CentOS 6.5 OS files should be hosted in the webserver. If you are planning to use a public URL then your host system should be able
+- A running local web-server accessible from the host system without using proxy
+- CentOS 6.5 OS files should be hosted in the web-server. If you are planning to use a public URL then your host system should be able
 to connect to the internet directly
 - A priviledged user having sudo access and also the user should be part of libvirtd group. I have used root user for doing the tasks.
 
@@ -68,16 +68,16 @@ centos.ks => kickstart file
 configrc => config file for the tool
 create_vm.sh => Program to do installation of vm and service installation and configuration inside vm
 modules/modules.tar.gz => Contains the puppet modules that are used in httpd service installation and configuration
-tests/runtest.sh => Runs the functional testings
+tests/runtest.sh => Runs the functional testing
 
 - Setting up configrc file
 
-Below configuration defines the kickstart URL and the installtion URL. Rest parameters in "Installation section" defines the property of the VM.
+Below configuration defines the kickstart URL and the installation URL. Rest parameters in "Installation section" defines the property of the VM.
 
 default_kickstart_url="http://10.102.231.50:8080/centos/centos.ks" #Url of the kickstart file
 default_install_url="http://10.102.231.50:8080/centos/6/x86_64/" #Url of the OS installation files (Should copy the content of DVD ISO to this localtion in webserver)
 
-third_party_puppet_modules => The puppet modules mentioned here as a comma separated list. These modules will be installed in the virtual machine. In this exercise I have installaed puppetlabs-stdlib and jproyo-git modules. Although jproyo-git is not used but it is useful for cloning git repositories.
+third_party_puppet_modules => The puppet modules mentioned here as a comma separated list. These modules will be installed in the virtual machine. In this exercise I have installed puppetlabs-stdlib and jproyo-git modules. Although jproyo-git is not used but it is useful for cloning git repositories.
 
 An example puppet file to install git and clone a repository from master branch is as follows
 
@@ -209,13 +209,13 @@ A successful execution of the script produces below output
 
 
 
-This script supports many command line arguments. But you can set them in the configrc file as well. To list all availabale options run 
+This script supports many command line arguments. But you can set them in the configrc file as well. To list all available options run 
     	
 	#./create_vm.sh -h
 
 It provides function to open the vm console while installation. There are two options vnc and virt-manager. For virt-manager to open a window you need to have a X server running in your host system.
 
-- Follwoing test cases are included
+- Following test cases are included
 
 1. Check whether httpd is installed in the vm
 2. Check whether the configuration changes has been made in the httpd.conf file of the vm
