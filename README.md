@@ -190,7 +190,7 @@ A successful execution of the script produces below output
     /etc/puppet/modules
     └── jproyo-git (v0.1.0)
     Warning: Config file /etc/puppet/hiera.yaml not found, using Hiera defaults
-    Notice: Compiled catalog for localhost in environment production in 0.65 seconds
+    Notice: Compiled catalog for localhost in environment production in 0.76 seconds
     Warning: The package type's allow_virtual parameter will be changing its default value from false to true in a future release. If you do not want to allow virtual packages, please explicitly set allow_virtual to false.
        (at /usr/lib/ruby/site_ruby/1.8/puppet/type.rb:816:in `set_default')
     Notice: /Stage[main]/Myapache/Group[nilanjan]/ensure: created
@@ -200,13 +200,17 @@ A successful execution of the script produces below output
     Notice: /Stage[main]/Myapache/File[/var/www/html]/group: group changed 'root' to 'nilanjan'
     Notice: /Stage[main]/Myapache/File[/etc/httpd/conf/httpd.conf]/content: content changed '{md5}27a5c8d9e75351b08b8ca1171e8a0bbd' to '{md5}27f8080dc63b5f7a486b2802c682acf6'
     Notice: /Stage[main]/Myapache/Service[httpd]/ensure: ensure changed 'stopped' to 'running'
-    Notice: The URL of the service is http://192.168.122.148:80
-    Notice: /Stage[main]/Myapache/Notify[info]/message: defined 'message' as 'The URL of the service is http://192.168.122.148:80'
+    Notice: The URL of the service is http://192.168.122.91:80
+    Notice: /Stage[main]/Myapache/Notify[info]/message: defined 'message' as 'The URL of the service is http://192.168.122.91:80'
     Notice: /Stage[main]/Myapache/File[/var/www/html/index.html]/ensure: defined content as '{md5}750fcdd444878be1691768445cf303f6'
-    Notice: Finished catalog run in 5.16 seconds
-    IP address of nostovm is 192.168.122.148
+    Notice: Finished catalog run in 3.31 seconds
+    IP address of nostovm is 192.168.122.91
     Generating test configuration file
 
+
+When you open a web browser in your host system and open the URL http://192.168.122.91:80 you will see a basic page
+ 
+![](http://i.imgur.com/4nVSPDO.jpg)
 
 
 This script supports many command line arguments. But you can set them in the configrc file as well. To list all available options run 
