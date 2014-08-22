@@ -105,23 +105,23 @@ url --url="http://10.102.231.50:8080/centos/6/x86_64/" => Set this URL appropria
 
 The default %post section is as below:
 
-%post
-#If you need to use a proxy to reach internet then uncomment below
-#export http_proxy=http://10.102.238.156:8080
-#export https_proxy=http://10.102.238.156:8080
-rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
-yum install -y puppet-server
-#create SSH keys
-ssh-keygen -t rsa -N ""  -f /root/.ssh/id_rsa
-#Copy the id_rsa.pub file of the host system user here
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkgPR1/OF5nG8oSbDtLDRR2hvwCKcGQx3IPr2qHxMpvehV7M+06Won7ohkTXpz2Lh/q7hbXYOSoT7L2XYOTA8oR3bjvAS5TfsWz9GpqiI3GBWPuqBpdXqTQ+W2LvxOuiqLG2i8x9vMXzhr6lcLle9sxf1tVOuRkpYlUFmegx6PB8oHQrIv+f780CukO/V/u+lsjkzIfd8mP5/lDxi4lyU5UdmtvkfgeizEOBfYiGlkFr/cgbaugeYdOmCYba2oq0kOSOHVQBNKHGHroL17vBVm7oXmP4vnvFWoi8Q7vlnY6cwiV6VJllSze760Ktrjwh0dIwvoq205TmPV9Y6r9JQj root@ubuntu" > /root/.ssh/authorized_keys
-
-#Include proxy configuration in /etc/bashrc. If you need to use a proxy to reach internet then uncomment below
-#cat >> /etc/bashrc << EOF
-#export http_proxy=http://10.102.238.156:8080
-#export https_proxy=http://10.102.238.156:8080
-#EOF
-%end
+    %post
+    #If you need to use a proxy to reach internet then uncomment below
+    #export http_proxy=http://10.102.238.156:8080
+    #export https_proxy=http://10.102.238.156:8080
+    rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
+    yum install -y puppet-server
+    #create SSH keys
+    ssh-keygen -t rsa -N ""  -f /root/.ssh/id_rsa
+    #Copy the id_rsa.pub file of the host system user here
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkgPR1/OF5nG8oSbDtLDRR2hvwCKcGQx3IPr2qHxMpvehV7M+06Won7ohkTXpz2Lh/q7hbXYOSoT7L2XYOTA8oR3bjvAS5TfsWz9GpqiI3GBWPuqBpdXqTQ+W2LvxOuiqLG2i8x9vMXzhr6lcLle9sxf1tVOuRkpYlUFmegx6PB8oHQrIv+f780CukO/V/u+lsjkzIfd8mP5/lDxi4lyU5UdmtvkfgeizEOBfYiGlkFr/cgbaugeYdOmCYba2oq0kOSOHVQBNKHGHroL17vBVm7oXmP4vnvFWoi8Q7vlnY6cwiV6VJllSze760Ktrjwh0dIwvoq205TmPV9Y6r9JQj root@ubuntu" > /root/.ssh/authorized_keys
+    
+    #Include proxy configuration in /etc/bashrc. If you need to use a proxy to reach internet then uncomment below
+    #cat >> /etc/bashrc << EOF
+    #export http_proxy=http://10.102.238.156:8080
+    #export https_proxy=http://10.102.238.156:8080
+    #EOF
+    %end
  
 Here two things need to be taken care
 1. If you need proxy to reach internet comment out the lines that sets it.
