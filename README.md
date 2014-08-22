@@ -213,9 +213,10 @@ When you open a web browser in your host system and open the URL http://192.168.
 ![](http://i.imgur.com/4nVSPDO.jpg)
 
 
-This script supports many command line arguments. But you can set them in the configrc file as well. To list all available options run 
+This script supports many command line arguments. But you can set them in the configrc file as well (command line parameters will have precedence over the values set in configrc). To list all available options run 
     	
 	#./create_vm.sh -h
+
 
 It provides function to open the vm console while installation. There are two options vnc and virt-manager. For virt-manager to open a window you need to have a X server running in your host system.
 
